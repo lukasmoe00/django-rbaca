@@ -1,0 +1,26 @@
+{% block content %}
+    <h1>Name: {{ role.name }}</h1>
+
+    <p><strong>Senior Role:</strong> <a href="{% url 'rbaca:role_view' role.id %}">{{ role.senior_role }}</a></p>
+
+    <div style="margin-left:20px;margin-top:20px">
+        <h4>Incompatible Roles</h4>
+
+        {% for inc_role in role.incompatible_roles.all %}
+        <hr>
+        <p >
+            <a href="{% url 'rbaca:role_view' inc_role.id %}">{{ inc_role.name }}</a>
+        </p>
+        {% endfor %}
+    </div>
+    <div style="margin-left:20px;margin-top:20px">
+        <h4>Permissions</h4>
+
+        {% for perm in role.permissions.all %}
+        <hr>
+        <p>
+            {{ perm.name }}
+        </p>
+        {% endfor %}
+    </div>
+{% endblock %}

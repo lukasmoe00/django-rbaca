@@ -1,0 +1,8 @@
+<h1>Roles</h1>
+<ul>
+{% for role in object_list %}
+    <li><a href="{% url 'rbaca:role_view' role.id %}">{{ role.name }}</a></li>
+{% empty %}
+    <li>No roles yet.</li>
+{% endfor %}
+</ul>
