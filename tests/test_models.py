@@ -1,4 +1,5 @@
 from datetime import datetime, timedelta
+from uuid import UUID
 
 from django.contrib.auth.models import Permission
 from django.contrib.contenttypes.models import ContentType
@@ -311,6 +312,21 @@ class TestRoleExpirationModel(TestCase):
         RoleExpiration.manage.remove_expired_roles()
 
         self.assertQuerysetEqual(self.user.roles.all(), Role.objects.none())
+
+    def test_role_expiration_uuid_generation(self):
+        expiration_date = now()
+        role_expiration = RoleExpiration.manage.add_role_expiration(
+            self.user, self.role.name, expiration_date
+        )
+        self.assertIsInstance(role_expiration.uuid, UUID)
+
+    def test_role_expiration_get_by_uuid(self):
+        expiration_date = now()
+        role_expiration = RoleExpiration.manage.add_role_expiration(
+            self.user, self.role.name, expiration_date
+        )
+        get_by_uuid = RoleExpiration.objects.get(uuid=role_expiration.uuid)
+        self.assertEqual(get_by_uuid, role_expiration)
 
 
 class TestRoleMixinModel(TestCase):
