@@ -2,7 +2,7 @@
 name = "django-rbaca"
 version = "1.0.1"
 description = "Role-based access control with attributes for Django"
-authors = ["Steven Bruch", "Mickael Cormier"]
+authors = ["Steven Bruch", "Mickael Cormier", "Lukas Möhlenkamp-Röttger"]
 readme = "README.md"
 packages = [{include = "rbaca"}]
 
