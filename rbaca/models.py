@@ -1,3 +1,4 @@
+import uuid
 from datetime import timedelta
 
 from django.conf import settings
@@ -411,7 +412,10 @@ class RoleExpiration(models.Model):
         expiration_date (date): The date of role expiration.
         user (User): The user associated with the role expiration.
         role (Role): The role to be expired.
+        uuid(uuid): The uuid of the role expiration.
     """
+
+    uuid = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
 
     expiration_date = models.DateField(null=False, blank=False)
     user = models.ForeignKey(
