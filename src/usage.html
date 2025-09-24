@@ -1,0 +1,412 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Usage &mdash; django-rbaca  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Configuration" href="configuration.html" />
+    <link rel="prev" title="Installation" href="installation.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            django-rbaca
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Usage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#roles">Roles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sessions">Sessions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#role-expiration">Role Expiration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#securing-views">Securing Views</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#securing-templates">Securing Templates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#making-migrations">Making Migrations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#running-tests">Running Tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#conclusion">Conclusion</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="updates.html">Updates</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">django-rbaca</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Usage</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/src/usage.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="usage">
+<span id="id1"></span><h1>Usage<a class="headerlink" href="#usage" title="Link to this heading"></a></h1>
+<section id="roles">
+<h2>Roles<a class="headerlink" href="#roles" title="Link to this heading"></a></h2>
+<p>In the context of <cite>django-rbaca</cite>, roles play a fundamental role in determining and managing user access
+and permissions within your Django application. Roles serve as a mechanism to categorize users into distinct groups,
+each with specific responsibilities, permissions, and access levels. Understanding the concept of roles and their
+significance is key to effective access control and security in your application.</p>
+<p>Roles offer several key advantages within your application:</p>
+<ul class="simple">
+<li><p><strong>Granular Access Control</strong>: Roles enable granular control over who can perform specific actions and access particular functionalities. This fine-grained control enhances security and privacy.</p></li>
+<li><p><strong>Simplified Management</strong>: Managing user access and permissions becomes more straightforward when roles are well-defined. Roles streamline the process of determining what each user can and cannot do.</p></li>
+<li><p><strong>Scalability</strong>: As your application grows, roles allow you to easily accommodate new user types or responsibilities without rewriting access control rules for each user.</p></li>
+<li><p><strong>Customization</strong>: Roles can be customized to fit the unique requirements of your application. You can create roles that align with your specific use cases and business logic.</p></li>
+<li><p><strong>Dynamic Access</strong>: The ability to dynamically assign, modify, and remove roles from users allows for dynamic and real-time adjustments to access permissions.</p></li>
+</ul>
+<p>To effectively use <cite>django-rbaca</cite>, it’s essential to define roles and manage their associated permissions.
+This section provides examples of how to define roles and assign permissions in your Django project.</p>
+<ol class="arabic">
+<li><p>Defining roles</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span> <span class="nn">rbaca.models</span> <span class="kn">import</span> <span class="n">Role</span>
+<span class="linenos">2</span>
+<span class="linenos">3</span><span class="c1"># Create a new role</span>
+<span class="linenos">4</span><span class="n">admin_role</span> <span class="o">=</span> <span class="n">Role</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;admin&#39;</span><span class="p">)</span>
+<span class="linenos">5</span>
+<span class="linenos">6</span><span class="c1"># Assign permissions to the role</span>
+<span class="linenos">7</span><span class="n">admin_role</span><span class="o">.</span><span class="n">permissions</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;can_view_dashboard&#39;</span><span class="p">,</span> <span class="s1">&#39;can_manage_users&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><dl>
+<dt>Assigning permissions to a user</dt><dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span> <span class="nn">your.models.user</span> <span class="kn">import</span> <span class="n">User</span>
+<span class="linenos">2</span><span class="kn">from</span> <span class="nn">rbaca.models</span> <span class="kn">import</span> <span class="n">Role</span>
+<span class="linenos">3</span>
+<span class="linenos">4</span><span class="c1"># Get a user</span>
+<span class="linenos">5</span><span class="n">user</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="s1">&#39;example_user&#39;</span><span class="p">)</span>
+<span class="linenos">6</span>
+<span class="linenos">7</span><span class="c1"># Assign a role to the user</span>
+<span class="linenos">8</span><span class="n">user</span><span class="o">.</span><span class="n">roles</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Role</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;admin&#39;</span><span class="p">))</span>
+<span class="linenos">9</span><span class="n">user</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+</ol>
+</section>
+<section id="sessions">
+<h2>Sessions<a class="headerlink" href="#sessions" title="Link to this heading"></a></h2>
+<p>In <cite>django-rbaca</cite>, a session represents the active roles associated with a user during their current session.
+The active roles determine the permissions that the user has for the duration of the session.
+This mechanism allows for dynamic control over a user’s access based on the specific roles assigned to them.</p>
+<p>When managing user sessions with <cite>django-rbaca</cite>, keep the following considerations in mind:</p>
+<ul class="simple">
+<li><p><strong>Role-Based Session Initialization</strong>: Upon user authentication, initialize the session with the appropriate roles assigned to the user. This ensures that the user has access only to the functionalities corresponding to their roles during the session.</p></li>
+<li><p><strong>Dynamic Role Updates</strong>: Handle any dynamic changes to a user’s roles during the session. If a user’s roles are modified while the session is active, ensure that the session reflects these changes to adjust the user’s access permissions accordingly.</p></li>
+<li><p><strong>Session Termination</strong>: Define proper procedures for terminating user sessions. When a user logs out or their session expires, clear the active roles associated with the session to prevent any unauthorized access attempts. This app provides functionalities to start and stop sessions.</p></li>
+</ul>
+<p><cite>django-rbaca</cite> simplifies the management of user sessions within the context of Role-Based Access Control,
+ensuring that users have access only to functionalities corresponding to their active roles.
+By leveraging the session management capabilities of <cite>django-rbaca</cite>, you can maintain a secure and controlled
+environment for your application, allowing for precise and dynamic access control throughout a user’s session.</p>
+<p>In the following sections, we’ll explore how to manage sessions effectively within the <cite>django-rbaca</cite> app,
+enabling you to maximize the security and efficiency of your application’s access control mechanisms.</p>
+<ol class="arabic">
+<li><p>Start a session</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span> <span class="nn">rbaca.models</span> <span class="kn">import</span> <span class="n">Session</span>
+<span class="linenos">2</span>
+<span class="linenos">3</span><span class="c1"># Create a session</span>
+<span class="linenos">4</span><span class="n">Session</span><span class="o">.</span><span class="n">manage</span><span class="o">.</span><span class="n">add_session</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">RoleQuerySet</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Check if user has active session</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">if</span> <span class="n">user</span><span class="o">.</span><span class="n">has_active_session</span><span class="p">():</span>
+<span class="linenos">2</span>    <span class="k">return</span> <span class="n">secrets</span>
+<span class="linenos">3</span><span class="k">else</span><span class="p">:</span>
+<span class="linenos">4</span>    <span class="k">return</span> <span class="kc">None</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><dl>
+<dt>Manage session roles</dt><dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">session</span> <span class="o">=</span> <span class="n">user</span><span class="o">.</span><span class="n">get_active_session</span><span class="p">()</span>
+<span class="linenos">2</span>
+<span class="linenos">3</span><span class="k">if</span> <span class="n">session</span><span class="p">:</span>
+<span class="linenos">4</span>    <span class="c1"># remove active roles</span>
+<span class="linenos">5</span>    <span class="n">session</span><span class="o">.</span><span class="n">drop_active_roles</span><span class="p">()</span>
+<span class="linenos">6</span>
+<span class="linenos">7</span>    <span class="c1"># add roles</span>
+<span class="linenos">8</span>    <span class="n">session</span><span class="o">.</span><span class="n">add_active_roles</span><span class="p">(</span><span class="n">RoleQuerySet</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt>End a session</dt><dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">session</span> <span class="o">=</span> <span class="n">user</span><span class="o">.</span><span class="n">get_active_session</span><span class="p">()</span>
+<span class="linenos">2</span>
+<span class="linenos">3</span><span class="c1"># Close session</span>
+<span class="linenos">4</span><span class="n">session</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+</ol>
+</section>
+<section id="role-expiration">
+<h2>Role Expiration<a class="headerlink" href="#role-expiration" title="Link to this heading"></a></h2>
+<p>In the <cite>django-rbaca</cite> app, Role Expiration is a powerful feature that enables dynamic and controlled management
+of user roles within your application. Role Expiration introduces the concept of time-limited or time-bound roles,
+allowing you to set specific validity periods for roles assigned to users. Understanding Role Expiration and
+its significance is crucial for optimizing access control and security in your application.</p>
+<p>The Role Expiration feature offers several key advantages within your application:</p>
+<ul class="simple">
+<li><p><strong>Temporary Privileges</strong>: Role Expiration is particularly useful for roles that grant temporary or conditional privileges. For example, you might have roles that provide access for a specific project or event, and these roles automatically expire when the project or event concludes.</p></li>
+<li><p><strong>Security Enhancement</strong>: Role Expiration enhances security by ensuring that users have access only when it is explicitly granted. This feature minimizes the risk of unintended or prolonged access to sensitive functionalities.</p></li>
+<li><p><strong>Dynamic Access Control</strong>: Role Expiration allows for dynamic changes in user access based on time. This feature is valuable when dealing with roles that have predefined durations, such as temporary admin roles during system maintenance.</p></li>
+<li><p><strong>Administrative Ease</strong>: Managing time-bound roles becomes more straightforward with Role Expiration. Roles with fixed expiration dates can be automatically deactivated, reducing the need for manual intervention.</p></li>
+</ul>
+<p>The dynamic and time-sensitive nature of Role Expiration adds an extra layer of control and precision to your access
+management strategy, allowing for tailored and secure user access based on predefined timeframes. Here are some examples:</p>
+<ol class="arabic">
+<li><p>Define an role expiration</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">date</span>
+<span class="linenos">2</span><span class="kn">from</span> <span class="nn">rbaca.models</span> <span class="kn">import</span> <span class="n">RoleExpiration</span>
+<span class="linenos">3</span>
+<span class="linenos">4</span><span class="n">RoleExpiration</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="n">user</span><span class="p">,</span> <span class="n">role</span><span class="o">=</span><span class="n">role</span><span class="p">,</span> <span class="n">expiration_date</span><span class="o">=</span><span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">())</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><dl>
+<dt>Get all expired roles</dt><dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span> <span class="nn">rbaca.models</span> <span class="kn">import</span> <span class="n">RoleExpiration</span>
+<span class="linenos">2</span>
+<span class="linenos">3</span><span class="n">RoleExpiration</span><span class="o">.</span><span class="n">manage</span><span class="o">.</span><span class="n">get_expired_roles</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+</ol>
+<ol class="arabic" start="2">
+<li><dl>
+<dt>Remove all expired roles</dt><dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span> <span class="nn">rbaca.models</span> <span class="kn">import</span> <span class="n">RoleExpiration</span>
+<span class="linenos">2</span>
+<span class="linenos">3</span><span class="n">RoleExpiration</span><span class="o">.</span><span class="n">manage</span><span class="o">.</span><span class="n">remove_expired_roles</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+</ol>
+</section>
+<section id="securing-views">
+<h2>Securing Views<a class="headerlink" href="#securing-views" title="Link to this heading"></a></h2>
+<p>Configuring permissions and roles for class-based views in your project ensures that only authorized users can
+access specific parts. To set permissions and roles required for class-based views:</p>
+<ol class="arabic">
+<li><p>Open your Django views or viewsets where you want to set permissions and roles.</p></li>
+<li><p>Use the <cite>PermissionRequiredMixin</cite> to specify the required permissions for the view. For example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>  <span class="kn">from</span> <span class="nn">django.contrib.auth.mixins</span> <span class="kn">import</span> <span class="n">PermissionRequiredMixin</span>
+<span class="linenos">2</span>
+<span class="linenos">3</span>  <span class="k">class</span> <span class="nc">MyView</span><span class="p">(</span><span class="n">PermissionRequiredMixin</span><span class="p">,</span> <span class="n">View</span><span class="p">):</span>
+<span class="linenos">4</span>      <span class="n">permission_required</span> <span class="o">=</span> <span class="s2">&quot;app_name.permission_codename&quot;</span>
+<span class="linenos">5</span>
+<span class="linenos">6</span>      <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
+<span class="linenos">7</span>          <span class="c1"># View logic here</span>
+</pre></div>
+</div>
+<p>Replace <cite>“app_name.permission_codename”</cite> with the actual permission codename for the view.
+You can also provide a list of permissions.</p>
+</li>
+<li><p>Use the <cite>RoleRequiredMixin</cite> to specify the required role(s) for the view. For example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>  <span class="kn">from</span> <span class="nn">rbaca.mixins</span> <span class="kn">import</span> <span class="n">RoleRequiredMixin</span>
+<span class="linenos">2</span>
+<span class="linenos">3</span>  <span class="k">class</span> <span class="nc">MyView</span><span class="p">(</span><span class="n">RoleRequiredMixin</span><span class="p">,</span> <span class="n">View</span><span class="p">):</span>
+<span class="linenos">4</span>      <span class="n">role_required</span> <span class="o">=</span> <span class="s2">&quot;Role Name&quot;</span>
+<span class="linenos">5</span>
+<span class="linenos">6</span>      <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
+<span class="linenos">7</span>          <span class="c1"># View logic here</span>
+</pre></div>
+</div>
+<p>Replace <cite>“Role Name”</cite> with the name of the required role. You can also provide a list of roles.</p>
+</li>
+<li><p>Use the <cite>AttributeRequiredMixin</cite> to specify the required attribute for the view. For example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>  <span class="kn">from</span> <span class="nn">rbaca.mixins</span> <span class="kn">import</span> <span class="n">AttributeRequiredMixin</span>
+<span class="linenos">2</span>
+<span class="linenos">3</span>  <span class="k">class</span> <span class="nc">MyView</span><span class="p">(</span><span class="n">AttributeRequiredMixin</span><span class="p">,</span> <span class="n">View</span><span class="p">):</span>
+<span class="linenos">4</span>      <span class="n">check_func</span> <span class="o">=</span> <span class="n">function</span>
+<span class="linenos">5</span>
+<span class="linenos">6</span>      <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
+<span class="linenos">7</span>          <span class="c1"># View logic here</span>
+</pre></div>
+</div>
+<p>Replace <cite>function</cite> with comparing function. This function should look like this <cite>function(user, **kwargs)</cite>,
+where <cite>user</cite> is the user to check the permissions for and <cite>**kwargs</cite> is a dictionary containing additional information
+if needed. For more details, read the docs of django-rbaca.</p>
+</li>
+<li><p>Save your changes, and the permissions and roles will now be enforced when accessing the class-based views.</p>
+<blockquote>
+<div><p>It’s important to note that you must configure the roles and permissions before applying them to class-based views. <cite>django-rbaca</cite> is
+fully compatible with Django’s Access Control, for example with the <cite>has_perm</cite> decorator or <cite>PermissionRequiredMixin</cite>.</p>
+</div></blockquote>
+</li>
+</ol>
+</section>
+<section id="securing-templates">
+<h2>Securing Templates<a class="headerlink" href="#securing-templates" title="Link to this heading"></a></h2>
+<p>Configuring permissions and roles for templates in your project ensures that only authorized users can
+access specific parts. To set permissions and roles required for templates:</p>
+<ol class="arabic">
+<li><p>Open your Django views or viewsets where you want to set permissions and roles.</p></li>
+<li><p>Use the <cite>has_perm</cite> to specify the required permissions for the view. For example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="p">{</span><span class="o">%</span> <span class="n">load</span> <span class="n">rbaca_tags</span> <span class="o">%</span><span class="p">}</span>
+<span class="linenos">2</span>
+<span class="linenos">3</span><span class="p">{</span><span class="o">%</span> <span class="k">if</span> <span class="n">has_perm</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span> <span class="s1">&#39;app.can_edit_post&#39;</span> <span class="o">%</span><span class="p">}</span>
+<span class="linenos">4</span>    <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;{</span><span class="si">% u</span><span class="s2">rl &#39;edit_post&#39; post.id %}&quot;</span><span class="o">&gt;</span><span class="n">Edit</span> <span class="n">Post</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>
+<span class="linenos">5</span><span class="p">{</span><span class="o">%</span> <span class="n">endif</span> <span class="o">%</span><span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p>Use the <cite>has_role</cite> to specify the required role(s) for the view. For example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="p">{</span><span class="o">%</span> <span class="n">load</span> <span class="n">rbaca_tags</span> <span class="o">%</span><span class="p">}</span>
+<span class="linenos">2</span>
+<span class="linenos">3</span><span class="p">{</span><span class="o">%</span> <span class="k">if</span> <span class="n">has_role</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span> <span class="s1">&#39;Editor&#39;</span> <span class="o">%</span><span class="p">}</span>
+<span class="linenos">4</span>    <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;{</span><span class="si">% u</span><span class="s2">rl &#39;edit_post&#39; post.id %}&quot;</span><span class="o">&gt;</span><span class="n">Edit</span> <span class="n">Post</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>
+<span class="linenos">5</span><span class="p">{</span><span class="o">%</span> <span class="n">endif</span> <span class="o">%</span><span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p>Use the <cite>has_active_session</cite> to check if the current user has an active session.</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="p">{</span><span class="o">%</span> <span class="n">load</span> <span class="n">rbaca_tags</span> <span class="o">%</span><span class="p">}</span>
+<span class="linenos">2</span>
+<span class="linenos">3</span><span class="p">{</span><span class="o">%</span> <span class="k">if</span> <span class="n">has_active_session</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span> <span class="o">%</span><span class="p">}</span>
+<span class="linenos">4</span>    <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;{</span><span class="si">% u</span><span class="s2">rl &#39;secrets&#39; %}&quot;</span><span class="o">&gt;</span><span class="n">Secrets</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>
+<span class="linenos">5</span><span class="p">{</span><span class="o">%</span> <span class="n">endif</span> <span class="o">%</span><span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+</ol>
+</section>
+<section id="making-migrations">
+<h2>Making Migrations<a class="headerlink" href="#making-migrations" title="Link to this heading"></a></h2>
+<p>In Antonn, database migrations are essential for keeping your database schema up-to-date with model
+changes of the auth manager app.
+To create new migrations, you should use the <cite>makemigrations.py</cite> script.</p>
+<ol class="arabic simple">
+<li><p>Open a terminal or command prompt.</p></li>
+<li><p>Navigate to the root of auth manager app</p></li>
+<li><p>Run the following command to create new migrations:</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>makemigrations.py
+</pre></div>
+</div>
+<p>This command will create a new database migration, which reflects the model changes.</p>
+</section>
+<section id="running-tests">
+<h2>Running Tests<a class="headerlink" href="#running-tests" title="Link to this heading"></a></h2>
+<p>Testing is a crucial aspect of software development to ensure that the application works
+correctly and reliably.
+The auth manager app provides the ability to run tests using the <cite>run_tests.py</cite> script.</p>
+<ol class="arabic simple">
+<li><p>Open a terminal or command prompt.</p></li>
+<li><p>Navigate to the root of auth manager app</p></li>
+<li><p>Run the following command to execute all available tests:</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>run_tests.py
+</pre></div>
+</div>
+<p>This script uses test settings, to ensure that everythin runs correctly.</p>
+</section>
+<section id="conclusion">
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading"></a></h2>
+<p>django-rbaca is a powerful app to manage permissions within a django project.
+This part of the documentation is just an introduction of the main mechanisms.
+For a detailed documentation of all functionalities and features, take a look at the “Modules” section.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="installation.html" class="btn btn-neutral float-left" title="Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="configuration.html" class="btn btn-neutral float-right" title="Configuration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Fraunhofer IOSB.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
